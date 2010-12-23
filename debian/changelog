@@ -1,6 +1,5 @@
-fdr-ppa-demo (ppa-demo-1) unstable; urgency=low
+fdr-ppa-demo (1.0.0-1) maverick; urgency=low
 
   * Initial Debian version.
 
- -- Mr. Nobody <nobody@root.org>  Wed, 22 Dec 2010 23:29:06 -0800
-
+ -- Dan Farina <drfarina@acm.org>  Wed, 22 Dec 2010 23:29:06 -0800
