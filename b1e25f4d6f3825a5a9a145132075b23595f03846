@@ -1,0 +1,4 @@
+Also know that this step will want to sign some files using GPG.  If
+gpg-agent is not running, it should prompt you for a password, or pop
+open an X Window in your face asking you for a password to decrypt
+your key.
