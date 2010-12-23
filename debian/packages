@@ -5,41 +5,31 @@
 ## (from the yada-doc package) to find out how to customise it to your needs.
 
 Source: fdr-ppa-demo
-Section: unknown
+Section: admin
 Priority: extra
-Maintainer: Mr. Nobody <nobody@root.org>
-Standards-Version: 3.7.2
-Upstream-Source: ftp://some.where/over/the/rainbow.tar.gz
-Homepage: http://some.thing/nasty/in/the/woodshed.html
-Description: Some package
-Copyright: GPL
- Copyright 2002 A. Snide Badger
+Maintainer: Dan Farina <drfarina@acm.org>
+Standards-Version: 3.9.1
+Upstream-Source: https://github.com/fdr/fdr-ppa-demo/tarball/master
+Homepage: https://github.com/fdr/fdr-ppa-demo
+Description: A very simple demonstration package
+Copyright: BSD
+ Copyright 2010 Dan Farina
 Major-Changes:
  Introduced many bugs by not editing debian/packages appropriately.
+Build-Depends: gcc
 Build: sh
- CC=${CC:-gcc}
- CFLAGS=${CFLAGS:--Wall -g}
- CXXFLAGS=${CXXFLAGS:--Wall -g}
- LDFLAGS=${LDFLAGS:-}
- if [ "${DEB_BUILD_OPTIONS#*noopt}" != "$DEB_BUILD_OPTIONS" ]; then
-     CFLAGS="$CFLAGS -O0"
-     CXXFLAGS="$CXXFLAGS -O0"
- else
-     CFLAGS="$CFLAGS -O2"
-     CXXFLAGS="$CXXFLAGS -O2"
- fi
- CC="$CC" CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" \
-     ./configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man
- make
+ gcc fdr-helloworld.c
+ mv a.out fdr-helloworld
 Clean: sh
- make distclean || make clean || true
+ rm -f a.out
+ rm -f fdr-helloworld
 
 Package: fdr-ppa-demo
 Architecture: any
-Depends: []
-Description: Some binary package
+Depends: [/usr/bin/*], emacs
+Description: fdr hello world package
  This is a generic binary package.  If you see this text, it hasn't been
  built properly; the packager should have replaced this with something
  appropriate.
 Install: sh
- make install DESTDIR=$ROOT
+ yada install -bin fdr-helloworld
